@@ -1,0 +1,84 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{enumitem}
+\usepackage{microtype}
+
+\title{Homework Answers}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{1. Bernie vs. a 150 Mbps transmission line}
+
+Using \(1\,\mathrm{GB}=10^9\) bytes, Bernie carries
+\[
+3 \times 7\,\mathrm{GB} \times 8 = 168\,\mathrm{Gb}.
+\]
+
+At \(18\,\mathrm{km/h}=0.005\,\mathrm{km/s}\), the travel time for distance \(d\) is \(d/0.005\) s. Bernie is faster when
+\[
+\frac{168\times10^9}{d/0.005} > 150\times10^6
+\quad\Rightarrow\quad d<5.6\,\mathrm{km}.
+\]
+
+Thus, Bernie has the higher data rate for \(0<d<5.6\,\mathrm{km}\) (one-way distance).
+
+\begin{itemize}[leftmargin=*]
+  \item (i) If Bernie's speed doubles: \(0<d<11.2\,\mathrm{km}\).
+  \item (ii) If each tape's capacity doubles: \(0<d<11.2\,\mathrm{km}\).
+  \item (iii) If the line rate doubles to 300 Mbps: \(0<d<2.8\,\mathrm{km}\).
+\end{itemize}
+
+\section*{2. Layered protocols}
+
+Two reasons:
+\begin{enumerate}[leftmargin=*]
+  \item They divide a complex networking task into manageable modules.
+  \item A layer can be changed or replaced without redesigning the other layers.
+\end{enumerate}
+
+Disadvantage: layering can add overhead and reduce performance.
+
+\section*{3. Retransmissions}
+
+Each attempt uses one transmission; with probability \(p\), another attempt is needed. Assuming independent errors and \(p<1\),
+\[
+E[N]=1+pE[N]
+\quad\Rightarrow\quad
+E[N]=\frac{1}{1-p}.
+\]
+The mean number of transmissions is \(\frac{1}{1-p}\).
+
+\section*{4. TCP vs. UDP}
+
+\textbf{TCP} is connection-oriented and provides reliable, ordered delivery. \textbf{UDP} is connectionless and provides no delivery, ordering, or retransmission guarantees.
+
+\section*{5. Length of one bit in 802.3}
+
+The propagation speed is
+\[
+v=\frac{2}{3}(3\times10^8)=2\times10^8\,\mathrm{m/s}.
+\]
+At 10 Mbps, one bit lasts \(1/(10\times10^6)\) s, so
+\[
+L=v\cdot\frac{1}{10\times10^6}=20\,\mathrm{m}.
+\]
+One bit was \(20\) meters long.
+
+\section*{6. International standards}
+
+\begin{itemize}[leftmargin=*]
+  \item Advantage: they ensure interoperability between equipment from different countries and vendors.
+  \item Disadvantage: reaching agreement can be slow, and the resulting standards may be difficult to update.
+\end{itemize}
+
+\section*{7. Common OSI and TCP/IP layers}
+
+Both models have \textbf{application}, \textbf{transport}, and \textbf{network} layers (called \textbf{Internet} in TCP/IP). In the four-layer TCP/IP model, the \textbf{network access} layer covers OSI's data link and physical layers.
+
+\end{document}

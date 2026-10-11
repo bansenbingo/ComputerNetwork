@@ -1,0 +1,282 @@
+% !TEX program = xelatex
+\documentclass[UTF8,a4paper,zihao=-4]{ctexart}
+
+\usepackage[a4paper,top=2.3cm,bottom=2.3cm,left=2.4cm,right=2.4cm]{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{tabularx}
+\usepackage{lastpage}
+\usepackage{setspace}
+
+\hypersetup{colorlinks=true,linkcolor=black,urlcolor=blue,citecolor=black}
+\setstretch{1.25}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0.35em}
+\captionsetup{font=small,labelfont=bf,labelsep=quad}
+\renewcommand{\arraystretch}{1.35}
+\setlist[itemize]{leftmargin=2.4em,itemsep=0.25em}
+\setlist[enumerate]{leftmargin=2.8em,itemsep=0.25em}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+\titleformat{\section}{\zihao{3}\bfseries}{\chinese{section}、}{0.5em}{}
+\titleformat{\subsection}{\zihao{4}\bfseries}{\arabic{section}.\arabic{subsection}}{0.5em}{}
+\titleformat{\subsubsection}{\zihao{-4}\bfseries}{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}{0.5em}{}
+\titlespacing*{\section}{0pt}{1.2em}{0.7em}
+\titlespacing*{\subsection}{0pt}{0.9em}{0.4em}
+
+\lstset{
+  basicstyle=\ttfamily\small,
+  frame=single,
+  breaklines=true,
+  columns=fullflexible,
+  backgroundcolor=\color{gray!5},
+  rulecolor=\color{gray!40},
+  showstringspaces=false
+}
+
+\newcommand{\img}[3][0.85\textwidth]{%
+  \begin{figure}[H]\centering
+  \includegraphics[width=#1]{#2}
+  \caption{#3}
+  \end{figure}}
+
+\newcommand{\answer}[1]{\par\noindent\textbf{答：}#1\par}
+
+\begin{document}
+
+%==================== 扉页 ====================
+\begin{titlepage}
+\thispagestyle{empty}
+\begin{center}
+  \vspace*{0.8cm}
+  \includegraphics[width=0.36\textwidth]{ZJU.png}\\[1.8cm]
+  {\zihao{1}\heiti 本科实验报告}\\[2.2cm]
+\end{center}
+
+\begin{center}
+\renewcommand{\arraystretch}{2.0}
+\begin{tabular}{p{3.1cm}p{10.2cm}}
+\zihao{4}课程名称： & \zihao{4}计算机网络基础\\ \cline{2-2}
+\zihao{4}实验项目： & \zihao{4}Wireshark 软件初探和常见网络命令的使用\\ \cline{2-2}
+\zihao{4}姓\quad 名： & \zihao{4}姜快快\\ \cline{2-2}
+\zihao{4}学\quad 号： & \zihao{4}3210104669\\ \cline{2-2}
+\zihao{4}专\quad 业： & \zihao{4}生物医学工程\\ \cline{2-2}
+\zihao{4}指导教师： & \zihao{4}董玮\\ \cline{2-2}
+\zihao{4}实验地点： & \zihao{4}计算机网络实验室\\ \cline{2-2}
+\zihao{4}实验日期： & \zihao{4}2026年9月29日\\ \cline{2-2}
+\end{tabular}
+\end{center}
+\vfill
+\begin{center}\zihao{4}浙江大学\end{center}
+\end{titlepage}
+
+%==================== 报告信息页 ====================
+\begin{center}
+{\zihao{2}\bfseries 浙江大学实验报告}\\[0.8em]
+\end{center}
+
+\noindent\begin{tabularx}{\textwidth}{@{}p{2.6cm}X p{2.6cm}X@{}}
+课程名称： & 计算机网络基础 & 实验类型： & 操作实验\\
+实验项目名称： & \multicolumn{3}{l@{}}{Wireshark 软件初探和常见网络命令的使用}\\
+学生姓名： & 姜快快 & 专业： & 生物医学工程\\
+学号： & 3210104669 & 指导老师： & 董玮\\
+实验地点： & 计算机网络实验室 & 实验日期： & 2026年9月29日
+\end{tabularx}
+
+\vspace{1.0em}
+
+\section{实验目的和要求}
+\begin{itemize}
+  \item 初步了解 Wireshark 软件的界面、抓包流程及协议分析功能。
+  \item 熟悉 Windows 平台常用网络命令的功能、基本语法和典型输出。
+  \item 掌握捕获过滤器与显示过滤器的配置方法，理解二者的使用时机和作用差异。
+  \item 通过实际抓包观察 ARP、ICMP、DNS、TCP、HTTP 等协议数据包，建立命令、协议和网络行为之间的联系。
+  \item 能够将命令行结果、Wireshark 数据包和协议原理结合起来，完成实验数据记录、分析和总结。
+\end{itemize}
+
+\section{实验内容和原理}
+\subsection{实验内容}
+本实验以 Wireshark 4.6.8 为协议分析工具，在 Windows 环境中完成网络数据包的捕获和分析。实验主要包括：认识 Wireshark 界面；捕获网络接口上的全部数据包；使用显示过滤器和捕获过滤器筛选数据包；执行 Ping、ARP、Tracert、Nslookup、Netstat、Route、Net View、Telnet 等命令；观察这些操作在网络上产生的协议数据包，并对抓包结果进行分析。
+
+\subsection{基本原理}
+\begin{enumerate}
+  \item \textbf{分层通信原理。}网络通信按照协议栈分层组织。以太网帧承载 IP 数据报，IP 数据报承载 TCP、UDP 或 ICMP 等传输层及网络层协议，应用层协议（如 DNS、HTTP）再通过 TCP 或 UDP 传输。Wireshark 可以将一个数据包按照协议层次展开，帮助分析各层首部字段及封装关系。
+  \item \textbf{ARP 原理。}在 IPv4 局域网中，主机发送数据前需要根据目标 IPv4 地址获得下一跳设备的 MAC 地址。发送方广播 ARP Request，目标主机返回 ARP Reply，并将结果写入 ARP 缓存。因此，清空 ARP 缓存后访问局域网网关时，通常可以观察到 ARP 请求和响应。
+  \item \textbf{ICMP 原理。}Ping 使用 ICMP Echo Request 和 Echo Reply 测试可达性，并根据请求和响应的时间差估算往返时延。Tracert 则通过逐步增加 IP 首部中的 TTL，使沿途路由器返回 ICMP Time Exceeded 报文，从而推断到目标主机的路径。
+  \item \textbf{DNS 原理。}DNS 将域名转换为 IP 地址。客户端通常通过 UDP 53 端口向 DNS 服务器发送查询，服务器返回 A、AAAA 等资源记录。执行 Nslookup 时，可以在 Wireshark 中观察 DNS Query 和 DNS Response。
+  \item \textbf{TCP 原理。}TCP 是面向连接的可靠传输协议，通常通过 SYN、SYN/ACK、ACK 完成三次握手，连接结束时通过 FIN/ACK 进行有序释放。Telnet 连接本机 HTTP 服务时，Telnet 负责建立 TCP 连接，手工输入的 GET 请求属于 HTTP 应用层数据。
+  \item \textbf{HTTP 原理。}HTTP 请求由请求行、请求头和空行组成。例如，\texttt{GET / HTTP/1.0} 表示请求服务器返回根目录资源。Python 的 \texttt{http.server} 返回 \texttt{200 OK} 和目录索引页面，随后关闭连接。
+\end{enumerate}
+
+\section{实验环境与工具}
+\begin{itemize}
+  \item 操作系统：Windows。
+  \item 抓包软件：Wireshark 4.6.8。
+  \item 抓包接口：根据实验操作选择实际使用的网络接口；访问本机 \texttt{127.0.0.1} 的 Telnet 实验使用 Npcap Loopback Adapter。
+  \item 命令行工具：\texttt{ping}、\texttt{ipconfig}、\texttt{arp}、\texttt{tracert}、\texttt{nslookup}、\texttt{netstat}、\texttt{route}、\texttt{net}、\texttt{telnet}。
+  \item HTTP 服务：Python \texttt{http.server}，本实验最终使用本机 8765 端口进行 Telnet/HTTP 测试。
+\end{itemize}
+
+\section{操作方法与实验步骤}
+\subsection{Wireshark 界面与完整数据包捕获}
+启动 Wireshark 4.6.8，选择有实时流量的网络接口并开始捕获，不设置捕获过滤器。执行若干网络命令后停止捕获，将结果保存为 pcapng 文件。通过菜单栏、工具栏、显示过滤器栏、数据包列表区、数据包详细信息区和数据包字节区认识软件界面。
+
+\img[0.92\textwidth]{lab1/01.png}{Wireshark 主界面及完整数据包捕获结果}
+
+\subsection{显示过滤器}
+抓包完成后，在顶部显示过滤器栏分别输入以下过滤器并观察结果：
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+过滤器 & 作用\\
+\midrule
+\texttt{arp} & 只显示 ARP 数据包\\
+\texttt{dns} & 只显示 DNS 数据包\\
+\texttt{http} & 只显示 HTTP 数据包\\
+\texttt{icmpv6} & 只显示 ICMPv6 数据包\\
+\texttt{tcp} & 只显示 TCP 数据包\\
+\texttt{udp} & 只显示 UDP 数据包\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\img[0.92\textwidth]{lab1/01-arp.png}{显示过滤器 \texttt{arp} 的结果}
+\img[0.92\textwidth]{lab1/01-dns.png}{显示过滤器 \texttt{dns} 的结果}
+\img[0.92\textwidth]{lab1/01-http.png}{显示过滤器 \texttt{http} 的结果}
+\img[0.92\textwidth]{lab1/01-icmpv6.png}{显示过滤器 \texttt{icmpv6} 的结果}
+\img[0.92\textwidth]{lab1/01-tcp.png}{显示过滤器 \texttt{tcp} 的结果}
+\img[0.92\textwidth]{lab1/01-udp.png}{显示过滤器 \texttt{udp} 的结果}
+
+\subsection{捕获过滤器}
+在 \texttt{Capture \textrightarrow Options...} 中设置捕获过滤器，使 Wireshark 在数据包进入捕获文件之前就进行筛选。本实验截图中设置了 IPv4 捕获过滤条件，并保存了对应的 pcapng 文件。与显示过滤器不同，捕获过滤器会减少实际保存的数据包，未被捕获的数据包不能在本次文件中恢复。
+
+\img[0.9\textwidth]{lab1/02-filter-setup.png}{捕获过滤器设置界面}
+\img[0.92\textwidth]{lab1/02.png}{应用捕获过滤器后的抓包结果}
+
+\section{实验数据记录与处理}
+\subsection{运行 Ping 并观察 ICMP/ARP 数据包}
+执行 Ping 命令测试目标主机的连通性和往返时延，并在 Wireshark 中使用 \texttt{icmp} 或 \texttt{icmpv6} 过滤数据包。若目标位于局域网或需要经过网关，首次通信前还可能出现 ARP 解析过程。
+
+\img[0.75\textwidth]{lab1/03-ping-baidu.png}{Ping 命令运行结果}
+\img[0.92\textwidth]{lab1/06-icmp-1.png}{Ping 产生的 ICMP 数据包}
+\img[0.92\textwidth]{lab1/06-icmp-2.png}{ICMP 数据包的详细信息}
+\img[0.75\textwidth]{lab1/06-icmp-powershell.png}{Tracert 命令及其路径输出}
+
+\subsection{查看本机地址、网关和 DNS 配置}
+执行 \texttt{ipconfig /all}，记录网卡的物理地址、IPv4 地址、子网掩码、默认网关和 DNS 服务器。该命令主要读取本机配置，通常不会因为“查看配置”本身产生新的网络数据包。
+
+\img[0.72\textwidth]{lab1/04-address.png}{\texttt{ipconfig /all} 输出}
+\img[0.72\textwidth]{lab1/ipconfig.png}{本机网络配置的补充截图}
+
+\subsection{查看 ARP 缓存及 ARP 数据包}
+执行 \texttt{arp -a} 查看局域网内 IPv4 地址和 MAC 地址的对应关系。ARP 表中的每条记录表示本机已经学习到的邻居或网关映射。Wireshark 中可使用 \texttt{arp} 过滤器观察 ARP Request 和 ARP Reply。
+
+\img[0.72\textwidth]{lab1/05-arp-powershell.png}{\texttt{arp -a} 命令输出}
+\img[0.92\textwidth]{lab1/05-arp.png}{ARP 数据包及地址映射观察}
+
+\subsection{查看 DNS 解析过程}
+执行 \texttt{nslookup www.baidu.com}，观察 DNS 服务器返回的域名解析结果。Wireshark 使用 \texttt{dns} 过滤器时，可以看到 DNS 查询和响应，并可在详细信息区查看查询名称、查询类型、事务 ID 和返回地址。
+
+\img[0.72\textwidth]{lab1/07-dns-powershell.png}{\texttt{nslookup} 命令输出}
+\img[0.92\textwidth]{lab1/07-dns.png}{DNS 查询与响应数据包}
+
+\subsection{查看 TCP 连接与状态}
+执行 \texttt{netstat -ano} 查看本机当前 TCP/UDP 连接、监听端口、远端地址和连接状态。Wireshark 中使用 \texttt{tcp} 过滤器观察 TCP 握手、数据传输和连接释放过程。需要注意，\texttt{netstat} 主要是本地查询命令，本身不必然产生新的 TCP 连接。
+
+\img[0.72\textwidth]{lab1/08-tcp-powershell.png}{\texttt{netstat -ano} 输出}
+\img[0.92\textwidth]{lab1/08-tcp.png}{TCP 连接数据包}
+
+\subsection{查看和修改路由表}
+先执行 \texttt{route print} 保存原始路由表，再按照实验要求添加测试路由并再次执行 \texttt{route print}，对比修改前后的结果。实验结束后应删除测试路由，避免影响后续网络通信。\texttt{route print} 和 \texttt{route add} 主要读取或修改本机路由表，不一定直接产生数据包。
+
+\img[0.72\textwidth]{lab1/09-route-origin.png}{添加路由前的路由表}
+\img[0.72\textwidth]{lab1/09-add-route.png}{添加测试路由的命令}
+\img[0.72\textwidth]{lab1/09-new-route.png}{添加路由后的路由表}
+
+\subsection{查看局域网共享资源}
+使用 \texttt{net view} 查看局域网内可见的共享资源。由于 Windows 网络发现、文件共享、SMB 或防火墙设置可能不同，命令可能返回共享资源列表，也可能提示无法访问。无论成功还是失败，都应记录实际现象并分析原因。
+
+\img[0.72\textwidth]{lab1/10-net-view.png}{\texttt{net view} 命令结果}
+
+\subsection{Telnet 连接本机 HTTP 服务器}
+首先安装或启用 Telnet Client，然后用 Python 在本机启动 HTTP 服务：
+\begin{lstlisting}[language=bash]
+py -m http.server 8765 --bind 127.0.0.1
+\end{lstlisting}
+确认 8765 端口处于监听状态后，使用：
+\begin{lstlisting}[language=bash]
+telnet 127.0.0.1 8765
+\end{lstlisting}
+连接成功后手工输入 HTTP 请求：
+\begin{lstlisting}
+GET / HTTP/1.0
+Host: 127.0.0.1
+
+\end{lstlisting}
+Wireshark 中选择 Npcap Loopback Adapter，并使用 \texttt{tcp.port == 8765} 过滤器，观察 TCP 三次握手、HTTP GET、HTTP 200 响应和 TCP 连接关闭。
+
+\img[0.75\textwidth]{lab1/11-telnet-install.png}{Telnet Client 的安装或启用过程}
+\img[0.72\textwidth]{lab1/11-start-http.png}{启动本机 HTTP 服务}
+\img[0.72\textwidth]{lab1/11-telnet-powershell.png}{Telnet 连接和 HTTP 请求过程}
+\img[0.72\textwidth]{lab1/11-telnet-http-serve.png}{HTTP 服务器返回目录页面}
+\img[0.92\textwidth]{lab1/11-telnet-capture.png}{Telnet/HTTP 通信的 Wireshark 抓包}
+
+\section{实验结果与分析}
+\subsection{Wireshark 的两种过滤器有什么不同？}
+\answer{捕获过滤器和显示过滤器的作用阶段不同。捕获过滤器在开始抓包前生效，按照过滤条件限制实际写入捕获文件的数据包；显示过滤器在抓包完成后生效，只改变数据包列表中当前显示的内容，不会删除原始捕获文件中的数据包。两者即使使用相似的概念，语法体系也不同。例如，捕获过滤器通常写为 \texttt{tcp port 80}，显示过滤器写为 \texttt{tcp.port == 80}。因此，若希望减少抓包文件大小、降低捕获开销，应使用捕获过滤器；若希望在已经完成的抓包中反复分析不同协议，应使用显示过滤器。}
+
+\subsection{哪些网络命令会在 Wireshark 中产生数据包，为什么？}
+\answer{\texttt{ping} 会产生 ICMP Echo Request/Reply；\texttt{tracert} 会通过递增 TTL 产生 ICMP 超时报文或回显响应；\texttt{nslookup} 会向 DNS 服务器发送 DNS 查询；\texttt{telnet} 会建立 TCP 连接，并在连接中传输手工输入的 HTTP 数据；\texttt{net view} 或建立网络共享映射时，可能产生 DNS、NetBIOS、SMB/SMB2 和 TCP 数据包。\texttt{ipconfig /all}、\texttt{arp -a}、\texttt{netstat -ano} 和 \texttt{route print} 主要读取本机已有的配置或状态表，通常不会因为查询动作本身产生新的网络数据包；\texttt{route add} 主要修改本机路由表，也不会自动产生业务数据包。实际抓包结果还可能受到 DNS 缓存、ARP 缓存、后台服务、网络发现和防火墙策略影响。}
+
+\subsection{Ping 一个域名和 Ping 一个 IP 地址有什么不同？}
+\answer{Ping IP 地址时，程序可以直接向目标 IPv4 地址发送 ICMP Echo Request；若目标不在本地网络，还需要通过 ARP 获取默认网关的 MAC 地址。Ping 域名时，通常先进行 DNS 解析，将域名转换成 IPv4 或 IPv6 地址，再发送 ICMP 报文。因此，抓包时 Ping 域名可能先出现 DNS Query/Response，而 Ping IP 地址通常没有这一步。不过，如果系统已有 DNS 缓存，或者目标使用 IPv6、禁止 ICMP，实际现象可能与理论过程有所差异。}
+
+\section{实验结论}
+本实验完成了 Wireshark 4.6.8 的基本操作以及 Windows 常见网络命令的联合使用。通过完整捕获、显示过滤和捕获过滤，掌握了从“捕获全部流量”到“按协议定位数据包”的基本分析流程。实验观察表明，命令行操作并不是孤立的工具调用，而是会在协议栈中表现为不同的网络行为：Ping 对应 ICMP，Nslookup 对应 DNS，Telnet 连接 HTTP 服务则对应 TCP 建连和 HTTP 应用数据。ARP、DNS 和 TCP 握手分别体现了地址解析、域名解析和可靠传输建立过程。
+
+本实验还验证了本机回环通信的抓包特点：访问 \texttt{127.0.0.1:8765} 时应选择 Npcap Loopback Adapter，而不是普通 Wi-Fi 或 Ethernet 接口。Telnet 手工发送 HTTP 请求后，服务器返回目录索引页面，说明 TCP 连接、HTTP 请求和响应过程均正常完成。总体而言，Wireshark 能够把抽象的网络命令转化为可观察、可解释的数据包，为理解计算机网络协议提供了直观手段。
+
+\section{讨论与心得}
+实验过程中遇到的主要问题是 Telnet 连接本机 HTTP 服务时，最初使用 8000 端口出现连接卡住或连接重置现象。通过 \texttt{netstat -ano} 和 \texttt{Test-NetConnection} 检查端口监听状态后，将服务改为绑定 \texttt{127.0.0.1:8765}，并验证端口处于 LISTENING 状态，最终成功完成 Telnet 连接和 HTTP 请求。这个过程说明，遇到网络实验问题时，不能只根据应用程序表面的提示判断，而应依次检查服务是否启动、端口是否监听、地址是否匹配、接口是否选择正确以及协议请求是否完整。
+
+通过本实验，我进一步理解了捕获过滤器与显示过滤器的区别，也认识到同一个命令在不同缓存和网络环境下可能产生不同的数据包。例如，ARP 或 DNS 缓存存在时，某些预期的数据包可能不会再次出现；而访问共享资源时，网络发现和防火墙设置也会影响实验结果。今后进行抓包实验时，应先明确实验目标，再选择正确的接口、过滤器和触发命令，同时保存原始 pcapng 文件，避免只依赖截图进行分析。
+
+本实验的改进建议是：每个命令最好单独进行一次“开始抓包—执行命令—停止抓包”的操作，并统一记录命令、接口、过滤器、抓包文件和截图名称；对于 ARP、DNS 等具有缓存影响的协议，可在实验前清理缓存或更换查询对象；对于 Telnet/HTTP 实验，应优先使用本机可控的 Python HTTP 服务，以降低外部网络不可达、HTTPS 加密和服务器策略造成的不确定性。
+
+\section*{附录：本实验使用的主要命令}
+\begin{longtable}{p{0.34\textwidth}p{0.58\textwidth}}
+\toprule
+命令 & 作用\\
+\midrule
+\endhead
+\texttt{ipconfig /all} & 查看本机网卡、IP、网关和 DNS 配置。\\
+\texttt{arp -a} & 查看 IPv4 地址与 MAC 地址的 ARP 缓存映射。\\
+\texttt{ping <地址>} & 使用 ICMP 测试连通性和往返时延。\\
+\texttt{tracert <地址>} & 通过 TTL 变化显示到目标地址的路径。\\
+\texttt{nslookup <域名>} & 查询域名对应的 IP 地址。\\
+\texttt{netstat -ano} & 查看连接、监听端口、状态和进程 PID。\\
+\texttt{route print} & 查看本机路由表。\\
+\texttt{route add/delete} & 添加或删除测试路由。\\
+\texttt{net view} & 查看局域网中的共享资源。\\
+\texttt{py -m http.server 8765 --bind 127.0.0.1} & 启动本机临时 HTTP 服务。\\
+\texttt{telnet 127.0.0.1 8765} & 通过 TCP 连接本机 HTTP 服务并手工发送请求。\\
+\bottomrule
+\end{longtable}
+
+\end{document}
