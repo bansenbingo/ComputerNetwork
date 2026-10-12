@@ -255,21 +255,32 @@ body & 变长 & 消息体内容（UTF-8编码） \\
 
 \subsection{客户端和服务器端框架图}
 
-% 预留位置插入框架图
+\clearpage
+\thispagestyle{empty}
 \begin{figure}[H]
     \centering
-    % TODO: 插入框架图
-    \fbox{\parbox{0.8\textwidth}{\centering\vspace{5cm}[预留位置：客户端和服务端框架流程图]\vspace{5cm}}}
-    \caption{客户端和服务端框架流程图}
+    \includegraphics[width=0.94\textwidth,height=0.70\textheight,keepaspectratio]{lab2/fig-client-framework.png}
+    \caption{客户端程序框架图}
+    \label{fig:client-framework}
 \end{figure}
+
+\clearpage
+\thispagestyle{empty}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.94\textwidth,height=0.70\textheight,keepaspectratio]{lab2/fig-server-framework.png}
+    \caption{服务端程序框架图}
+    \label{fig:server-framework}
+\end{figure}
+
+\clearpage
 
 \subsection{客户端初始运行菜单}
 
 % 预留位置插入菜单截图
 \begin{figure}[H]
     \centering
-    % TODO: 插入截图
-    \fbox{\parbox{0.8\textwidth}{\centering\vspace{3cm}[预留位置：客户端初始菜单截图]\vspace{3cm}}}
+    \includegraphics[width=0.9\textwidth]{lab2/fig-client-menu.png}
     \caption{客户端初始运行菜单}
 \end{figure}
 
@@ -300,8 +311,7 @@ void receiverLoop() {
 % 预留位置插入服务器截图
 \begin{figure}[H]
     \centering
-    % TODO: 插入截图
-    \fbox{\parbox{0.8\textwidth}{\centering\vspace{3cm}[预留位置：服务器初始运行界面截图]\vspace{3cm}}}
+    \includegraphics[width=0.9\textwidth]{lab2/fig-server-start.png}
     \caption{服务器初始运行界面}
 \end{figure}
 
@@ -343,8 +353,18 @@ void clientWorker(const std::shared_ptr<Client>& client) {
 % 预留位置插入连接截图
 \begin{figure}[H]
     \centering
-    % TODO: 插入截图
-    \fbox{\parbox{0.8\textwidth}{\centering\vspace{4cm}[预留位置：客户端连接功能截图（客户端和服务端）]\vspace{4cm}}}
+    \begin{minipage}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=0.9\textwidth]{lab2/fig-connect-client.png}
+        \par\vspace{2pt}
+        {\small (a) 客户端}
+    \end{minipage}\hfill
+    \begin{minipage}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=0.9\textwidth]{lab2/fig-connect-server.png}
+        \par\vspace{2pt}
+        {\small (b) 服务端}
+    \end{minipage}
     \caption{客户端连接功能}
 \end{figure}
 
@@ -355,8 +375,18 @@ void clientWorker(const std::shared_ptr<Client>& client) {
 % 预留位置插入时间截图
 \begin{figure}[H]
     \centering
-    % TODO: 插入截图
-    \fbox{\parbox{0.8\textwidth}{\centering\vspace{4cm}[预留位置：获取时间功能截图（客户端和服务端）]\vspace{4cm}}}
+    \begin{minipage}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=0.9\textwidth]{lab2/fig-time-client.png}
+        \par\vspace{2pt}
+        {\small (a) 客户端}
+    \end{minipage}\hfill
+    \begin{minipage}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=0.9\textwidth]{lab2/fig-time-server.png}
+        \par\vspace{2pt}
+        {\small (b) 服务端}
+    \end{minipage}
     \caption{获取服务器时间}
 \end{figure}
 
@@ -380,8 +410,18 @@ case kRequestTime: {
 % 预留位置插入名字截图
 \begin{figure}[H]
     \centering
-    % TODO: 插入截图
-    \fbox{\parbox{0.8\textwidth}{\centering\vspace{4cm}[预留位置：获取名字功能截图（客户端和服务端）]\vspace{4cm}}}
+    \begin{minipage}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=0.9\textwidth]{lab2/fig-name-client.png}
+        \par\vspace{2pt}
+        {\small (a) 客户端}
+    \end{minipage}\hfill
+    \begin{minipage}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=0.9\textwidth]{lab2/fig-name-server.png}
+        \par\vspace{2pt}
+        {\small (b) 服务端}
+    \end{minipage}
     \caption{获取服务器名字}
 \end{figure}
 
@@ -409,8 +449,18 @@ case kRequestName: {
 % 预留位置插入列表截图
 \begin{figure}[H]
     \centering
-    % TODO: 插入截图
-    \fbox{\parbox{0.8\textwidth}{\centering\vspace{4cm}[预留位置：获取客户端列表功能截图（客户端和服务端）]\vspace{4cm}}}
+    \begin{minipage}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=0.9\textwidth]{lab2/fig-list-client.png}
+        \par\vspace{2pt}
+        {\small (a) 客户端}
+    \end{minipage}\hfill
+    \begin{minipage}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=0.9\textwidth]{lab2/fig-list-server.png}
+        \par\vspace{2pt}
+        {\small (b) 服务端}
+    \end{minipage}
     \caption{获取活动客户端列表}
 \end{figure}
 
@@ -443,22 +493,19 @@ std::string makeClientList() {
 % 预留位置插入发送消息截图
 \begin{figure}[H]
     \centering
-    % TODO: 插入截图
-    \fbox{\parbox{0.8\textwidth}{\centering\vspace{3cm}[预留位置：发送消息功能截图（发送客户端）]\vspace{3cm}}}
+    \includegraphics[width=0.9\textwidth]{lab2/fig-send-client.png}
     \caption{发送消息的客户端}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    % TODO: 插入截图
-    \fbox{\parbox{0.8\textwidth}{\centering\vspace{3cm}[预留位置：接收消息功能截图（接收客户端）]\vspace{3cm}}}
+    \includegraphics[width=0.9\textwidth]{lab2/fig-recv-client.png}
     \caption{接收消息的客户端}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    % TODO: 插入截图
-    \fbox{\parbox{0.8\textwidth}{\centering\vspace{3cm}[预留位置：服务端转发消息截图（可选）]\vspace{3cm}}}
+    \includegraphics[width=0.9\textwidth]{lab2/fig-forward-server.png}
     \caption{服务端转发消息}
 \end{figure}
 

@@ -1,0 +1,187 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2320" height="1900" viewBox="0 0 2320 1900">
+<rect width="2320" height="1900" fill="#ffffff"/>
+<text x="65" y="65.0" font-family="Microsoft YaHei" font-size="42" fill="#245c8c" text-anchor="start">客户端程序框架 · user.cpp</text>
+<text x="65" y="112.0" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="start">TCP Socket 实验  |  主线程负责交互与显示，接收子线程负责完整收包</text>
+<rect x="40" y="150" width="1590" height="1485" rx="16" fill="#ffffff" stroke="#ccd6e0" stroke-width="2"/>
+<text x="64" y="187.0" font-family="Microsoft YaHei" font-size="27" fill="#245c8c" text-anchor="start">主线程 · main() / 菜单事件循环</text>
+<rect x="1660" y="150" width="620" height="1485" rx="16" fill="#ffffff" stroke="#ccd6e0" stroke-width="2"/>
+<text x="1684" y="187.0" font-family="Microsoft YaHei" font-size="27" fill="#237968" text-anchor="start">接收子线程 · receiverLoop()</text>
+<rect x="730.0" y="207.5" width="220" height="55" rx="27.5" fill="#eaf3f8" stroke="#245c8c" stroke-width="2.3"/>
+<text x="840" y="243.16" font-family="Microsoft YaHei" font-size="24" fill="#26354a" text-anchor="middle">开始</text>
+<rect x="620.0" y="280.0" width="440" height="90" rx="10" fill="#f4f8fc" stroke="#245c8c" stroke-width="2.3"/>
+<text x="840" y="316.36" font-family="Microsoft YaHei" font-size="24" fill="#26354a" text-anchor="middle">WSAStartup(2.2)</text>
+<text x="840" y="349.96000000000004" font-family="Microsoft YaHei" font-size="24" fill="#26354a" text-anchor="middle">初始化连接标志与消息队列</text>
+<polyline points="840,263 840,280" fill="none" stroke="#26354a" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="840,280 845.0,269.0 835.0,269.0" fill="#26354a"/>
+<rect x="590.0" y="395.0" width="500" height="100" rx="10" fill="#f4f8fc" stroke="#245c8c" stroke-width="2.3"/>
+<text x="840" y="436.36" font-family="Microsoft YaHei" font-size="24" fill="#26354a" text-anchor="middle">drainMessages() 处理消息队列</text>
+<text x="840" y="469.96000000000004" font-family="Microsoft YaHei" font-size="24" fill="#26354a" text-anchor="middle">显示七项菜单，读取用户选择</text>
+<polyline points="840,370 840,395" fill="none" stroke="#26354a" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="840,395 845.0,384.0 835.0,384.0" fill="#26354a"/>
+<polygon points="840,525.0 1035.0,585 840,645.0 645.0,585" fill="#fff8e8" stroke="#245c8c" stroke-width="2.3"/>
+<text x="840" y="576.36" font-family="Microsoft YaHei" font-size="24" fill="#26354a" text-anchor="middle">已连接，或选择</text>
+<text x="840" y="609.96" font-family="Microsoft YaHei" font-size="24" fill="#26354a" text-anchor="middle">1 连接 / 7 退出？</text>
+<polyline points="840,495 840,525" fill="none" stroke="#26354a" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="840,525 845.0,514.0 835.0,514.0" fill="#26354a"/>
+<polyline points="1035,585 1555,585 1555,445 1090,445" fill="none" stroke="#a44848" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="1090,445 1101.0,450.0 1101.0,440.0" fill="#a44848"/>
+<text x="1320" y="566.0" font-family="Microsoft YaHei" font-size="21" fill="#a44848" text-anchor="middle">否：提示未连接</text>
+<polygon points="840,685.0 1010.0,740 840,795.0 670.0,740" fill="#fff8e8" stroke="#245c8c" stroke-width="2.3"/>
+<text x="840" y="748.16" font-family="Microsoft YaHei" font-size="24" fill="#26354a" text-anchor="middle">按菜单选项分支</text>
+<polyline points="840,645 840,685" fill="none" stroke="#26354a" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="840,685 845.0,674.0 835.0,674.0" fill="#26354a"/>
+<text x="871" y="670.0" font-family="Microsoft YaHei" font-size="21" fill="#26354a" text-anchor="middle">是</text>
+<polyline points="840,795 840,830" fill="none" stroke="#26354a" stroke-width="2.5" stroke-linejoin="round"/>
+<polyline points="260,830 1420,830" fill="none" stroke="#26354a" stroke-width="2.5" stroke-linejoin="round"/>
+<polyline points="260,830 260,865" fill="none" stroke="#26354a" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="260,865 265.0,854.0 255.0,854.0" fill="#26354a"/>
+<polyline points="550,830 550,865" fill="none" stroke="#26354a" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="550,865 555.0,854.0 545.0,854.0" fill="#26354a"/>
+<polyline points="840,830 840,865" fill="none" stroke="#26354a" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="840,865 845.0,854.0 835.0,854.0" fill="#26354a"/>
+<polyline points="1130,830 1130,865" fill="none" stroke="#26354a" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="1130,865 1135.0,854.0 1125.0,854.0" fill="#26354a"/>
+<polyline points="1420,830 1420,865" fill="none" stroke="#26354a" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="1420,865 1425.0,854.0 1415.0,854.0" fill="#26354a"/>
+<text x="260" y="815.0" font-family="Microsoft YaHei" font-size="23" fill="#245c8c" text-anchor="middle">1 连接</text>
+<text x="550" y="815.0" font-family="Microsoft YaHei" font-size="23" fill="#245c8c" text-anchor="middle">2 断开</text>
+<text x="840" y="815.0" font-family="Microsoft YaHei" font-size="23" fill="#245c8c" text-anchor="middle">3 / 4 / 5 查询</text>
+<text x="1130" y="815.0" font-family="Microsoft YaHei" font-size="23" fill="#245c8c" text-anchor="middle">6 发消息</text>
+<text x="1420" y="815.0" font-family="Microsoft YaHei" font-size="23" fill="#245c8c" text-anchor="middle">7 退出</text>
+<rect x="135.0" y="865.0" width="250" height="150" rx="10" fill="#f4f8fc" stroke="#245c8c" stroke-width="2.3"/>
+<text x="260" y="916.6800000000001" font-family="Microsoft YaHei" font-size="22" fill="#26354a" text-anchor="middle">输入服务器 IP / 主机名</text>
+<text x="260" y="947.48" font-family="Microsoft YaHei" font-size="22" fill="#26354a" text-anchor="middle">创建 socket、解析地址</text>
+<text x="260" y="978.2800000000001" font-family="Microsoft YaHei" font-size="22" fill="#26354a" text-anchor="middle">connect(服务器, 4669)</text>
+<polygon points="260,1050.0 370.0,1100 260,1150.0 150.0,1100" fill="#fff8e8" stroke="#245c8c" stroke-width="2.3"/>
+<text x="260" y="1107.48" font-family="Microsoft YaHei" font-size="22" fill="#26354a" text-anchor="middle">连接成功？</text>
+<polyline points="260,1015 260,1050" fill="none" stroke="#26354a" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="260,1050 265.0,1039.0 255.0,1039.0" fill="#26354a"/>
+<rect x="135.0" y="1210.0" width="250" height="150" rx="10" fill="#f4f8fc" stroke="#245c8c" stroke-width="2.3"/>
+<text x="260" y="1260.62" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">connected = true</text>
+<text x="260" y="1292.82" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">清空列表获取标志</text>
+<text x="260" y="1325.02" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">创建接收线程 ①</text>
+<polyline points="260,1150 260,1210" fill="none" stroke="#26354a" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="260,1210 265.0,1199.0 255.0,1199.0" fill="#26354a"/>
+<text x="286" y="1185.0" font-family="Microsoft YaHei" font-size="21" fill="#26354a" text-anchor="middle">是</text>
+<polyline points="150,1100 120,1100 120,1500 260,1500" fill="none" stroke="#a44848" stroke-width="2.5" stroke-linejoin="round"/>
+<text x="115" y="1420.0" font-family="Microsoft YaHei" font-size="20" fill="#a44848" text-anchor="start">否：关闭当前 socket</text>
+<rect x="425.0" y="865.0" width="250" height="300" rx="10" fill="#f4f8fc" stroke="#245c8c" stroke-width="2.3"/>
+<text x="550" y="945.48" font-family="Microsoft YaHei" font-size="22" fill="#26354a" text-anchor="middle">stopConnection()</text>
+<text x="550" y="976.28" font-family="Microsoft YaHei" font-size="22" fill="#26354a" text-anchor="middle">通知接收线程停止</text>
+<text x="550" y="1007.08" font-family="Microsoft YaHei" font-size="22" fill="#26354a" text-anchor="middle">shutdown(SD_BOTH)</text>
+<text x="550" y="1037.88" font-family="Microsoft YaHei" font-size="22" fill="#26354a" text-anchor="middle">join() 等待线程结束</text>
+<text x="550" y="1068.68" font-family="Microsoft YaHei" font-size="22" fill="#26354a" text-anchor="middle">closesocket()</text>
+<text x="550" y="1099.48" font-family="Microsoft YaHei" font-size="22" fill="#26354a" text-anchor="middle">重置连接与列表标志</text>
+<rect x="715.0" y="865.0" width="250" height="190" rx="10" fill="#f4f8fc" stroke="#245c8c" stroke-width="2.3"/>
+<text x="840" y="921.28" font-family="Microsoft YaHei" font-size="22" fill="#26354a" text-anchor="middle">选择对应请求类型</text>
+<text x="840" y="952.0799999999999" font-family="Microsoft YaHei" font-size="22" fill="#26354a" text-anchor="middle">3 时间 / 4 名字 / 5 列表</text>
+<text x="840" y="982.88" font-family="Microsoft YaHei" font-size="22" fill="#26354a" text-anchor="middle">生成非零 request_id</text>
+<text x="840" y="1013.68" font-family="Microsoft YaHei" font-size="22" fill="#26354a" text-anchor="middle">sendRequest() 发送</text>
+<rect x="715.0" y="1115.0" width="250" height="260" rx="10" fill="#f4f8fc" stroke="#245c8c" stroke-width="2.3"/>
+<text x="840" y="1190.88" font-family="Microsoft YaHei" font-size="22" fill="#26354a" text-anchor="middle">waitForResponse()</text>
+<text x="840" y="1221.68" font-family="Microsoft YaHei" font-size="22" fill="#26354a" text-anchor="middle">持续 drainMessages()</text>
+<text x="840" y="1252.48" font-family="Microsoft YaHei" font-size="22" fill="#26354a" text-anchor="middle">显示响应及转发消息</text>
+<text x="840" y="1283.2800000000002" font-family="Microsoft YaHei" font-size="22" fill="#26354a" text-anchor="middle">按 request_id 匹配响应</text>
+<text x="840" y="1314.0800000000002" font-family="Microsoft YaHei" font-size="22" fill="#26354a" text-anchor="middle">完成 / 断线 / 30 s 超时</text>
+<polyline points="840,1055 840,1115" fill="none" stroke="#26354a" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="840,1115 845.0,1104.0 835.0,1104.0" fill="#26354a"/>
+<polygon points="1130,865.0 1255.0,940 1130,1015.0 1005.0,940" fill="#fff8e8" stroke="#245c8c" stroke-width="2.3"/>
+<text x="1130" y="931.72" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">已获取活动</text>
+<text x="1130" y="963.9200000000001" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">客户端列表？</text>
+<rect x="1010.0" y="1055.0" width="240" height="110" rx="10" fill="#fff2f1" stroke="#a44848" stroke-width="2.3"/>
+<text x="1130" y="1101.72" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">提示先选择 5</text>
+<text x="1130" y="1133.92" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">返回菜单</text>
+<polyline points="1130,1015 1130,1055" fill="none" stroke="#a44848" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="1130,1055 1135.0,1044.0 1125.0,1044.0" fill="#a44848"/>
+<text x="1157" y="1040.0" font-family="Microsoft YaHei" font-size="21" fill="#a44848" text-anchor="middle">否</text>
+<rect x="1005.0" y="1215.0" width="250" height="210" rx="10" fill="#f4f8fc" stroke="#245c8c" stroke-width="2.3"/>
+<text x="1130" y="1265.88" font-family="Microsoft YaHei" font-size="22" fill="#26354a" text-anchor="middle">输入目标编号与消息</text>
+<text x="1130" y="1296.68" font-family="Microsoft YaHei" font-size="22" fill="#26354a" text-anchor="middle">type = 4</text>
+<text x="1130" y="1327.48" font-family="Microsoft YaHei" font-size="22" fill="#26354a" text-anchor="middle">body = 目标编号 + 换行</text>
+<text x="1130" y="1358.2800000000002" font-family="Microsoft YaHei" font-size="22" fill="#26354a" text-anchor="middle">+ 消息内容</text>
+<text x="1130" y="1389.0800000000002" font-family="Microsoft YaHei" font-size="22" fill="#26354a" text-anchor="middle">发送并等待响应</text>
+<polyline points="1255,940 1275,940 1275,1320 1255,1320" fill="none" stroke="#26354a" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="1255,1320 1266.0,1325.0 1266.0,1315.0" fill="#26354a"/>
+<text x="1278" y="1200.0" font-family="Microsoft YaHei" font-size="21" fill="#26354a" text-anchor="middle">是</text>
+<polyline points="1010,1110 990,1110 990,1500" fill="none" stroke="#a44848" stroke-width="2.5" stroke-linejoin="round"/>
+<rect x="1295.0" y="865.0" width="250" height="190" rx="10" fill="#f4f8fc" stroke="#245c8c" stroke-width="2.3"/>
+<text x="1420" y="935.62" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">stopConnection()</text>
+<text x="1420" y="967.82" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">断开连接并回收线程</text>
+<text x="1420" y="1000.02" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">quitting = true</text>
+<rect x="1295.0" y="1185.0" width="250" height="110" rx="10" fill="#f4f8fc" stroke="#245c8c" stroke-width="2.3"/>
+<text x="1420" y="1231.72" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">WSACleanup()</text>
+<text x="1420" y="1263.92" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">释放 Winsock 资源</text>
+<polyline points="1420,1055 1420,1185" fill="none" stroke="#26354a" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="1420,1185 1425.0,1174.0 1415.0,1174.0" fill="#26354a"/>
+<rect x="1315.0" y="1380.0" width="210" height="60" rx="30.0" fill="#eaf3f8" stroke="#245c8c" stroke-width="2.3"/>
+<text x="1420" y="1418.16" font-family="Microsoft YaHei" font-size="24" fill="#26354a" text-anchor="middle">结束</text>
+<polyline points="1420,1295 1420,1380" fill="none" stroke="#26354a" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="1420,1380 1425.0,1369.0 1415.0,1369.0" fill="#26354a"/>
+<polyline points="260,1360 260,1500" fill="none" stroke="#26354a" stroke-width="2.5" stroke-linejoin="round"/>
+<polyline points="550,1165 550,1500" fill="none" stroke="#26354a" stroke-width="2.5" stroke-linejoin="round"/>
+<polyline points="840,1375 840,1500" fill="none" stroke="#26354a" stroke-width="2.5" stroke-linejoin="round"/>
+<polyline points="1130,1425 1130,1500" fill="none" stroke="#26354a" stroke-width="2.5" stroke-linejoin="round"/>
+<polyline points="1130,1500 95,1500 95,445 590,445" fill="none" stroke="#26354a" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="590,445 579.0,440.0 579.0,450.0" fill="#26354a"/>
+<text x="575" y="1481.0" font-family="Microsoft YaHei" font-size="21" fill="#26354a" text-anchor="middle">继续菜单循环</text>
+<text x="440" y="1585.0" font-family="Microsoft YaHei" font-size="20" fill="#a44848" text-anchor="start">初始化失败：直接返回；无效菜单：提示后继续菜单循环。</text>
+<rect x="1785.0" y="262.5" width="370" height="85" rx="42.5" fill="#eaf3f8" stroke="#237968" stroke-width="2.3"/>
+<text x="1970" y="313.16" font-family="Microsoft YaHei" font-size="24" fill="#26354a" text-anchor="middle">① 连接成功后启动</text>
+<polyline points="260,1360 260,1540 1720,1540 1720,305 1785,305" fill="none" stroke="#237968" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="10 7"/>
+<polygon points="1785,305 1774.0,300.0 1774.0,310.0" fill="#237968"/>
+<polygon points="1970,410.0 2125.0,470 1970,530.0 1815.0,470" fill="#fff8e8" stroke="#237968" stroke-width="2.3"/>
+<text x="1970" y="477.82" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">stopReceiver 为真？</text>
+<polyline points="1970,348 1970,410" fill="none" stroke="#237968" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="1970,410 1975.0,399.0 1965.0,399.0" fill="#237968"/>
+<rect x="1790.0" y="590.0" width="360" height="140" rx="10" fill="#f4f8fc" stroke="#237968" stroke-width="2.3"/>
+<text x="1970" y="635.62" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">recvPacket() 读取完整帧</text>
+<text x="1970" y="667.82" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">recvExact() 读 12 B 报头</text>
+<text x="1970" y="700.02" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">校验长度，再读取消息体</text>
+<polyline points="1970,530 1970,590" fill="none" stroke="#237968" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="1970,590 1975.0,579.0 1965.0,579.0" fill="#237968"/>
+<text x="1997" y="567.0" font-family="Microsoft YaHei" font-size="21" fill="#237968" text-anchor="middle">否</text>
+<polygon points="1970,790.0 2125.0,850 1970,910.0 1815.0,850" fill="#fff8e8" stroke="#237968" stroke-width="2.3"/>
+<text x="1970" y="857.82" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">成功收到完整帧？</text>
+<polyline points="1970,730 1970,790" fill="none" stroke="#237968" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="1970,790 1975.0,779.0 1965.0,779.0" fill="#237968"/>
+<rect x="1795.0" y="960.0" width="350" height="100" rx="10" fill="#f4f8fc" stroke="#237968" stroke-width="2.3"/>
+<text x="1970" y="1001.72" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">enqueue(packet)</text>
+<text x="1970" y="1033.92" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">加 queueMutex 锁后入队</text>
+<polyline points="1970,910 1970,960" fill="none" stroke="#237968" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="1970,960 1975.0,949.0 1965.0,949.0" fill="#237968"/>
+<text x="1997" y="944.0" font-family="Microsoft YaHei" font-size="21" fill="#237968" text-anchor="middle">是</text>
+<polyline points="1795,1010 1760,1010 1760,470 1815,470" fill="none" stroke="#237968" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="1815,470 1804.0,465.0 1804.0,475.0" fill="#237968"/>
+<polygon points="1970,1120.0 2125.0,1170 1970,1220.0 1815.0,1170" fill="#fff8e8" stroke="#237968" stroke-width="2.3"/>
+<text x="1970" y="1177.82" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">主动通知停止？</text>
+<polyline points="2125,850 2170,850 2170,1170 2125,1170" fill="none" stroke="#a44848" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="2125,1170 2136.0,1175.0 2136.0,1165.0" fill="#a44848"/>
+<text x="2175" y="1100.0" font-family="Microsoft YaHei" font-size="21" fill="#a44848" text-anchor="middle">否 / 收包失败</text>
+<rect x="1785.0" y="1270.0" width="370" height="130" rx="10" fill="#f4f8fc" stroke="#237968" stroke-width="2.3"/>
+<text x="1970" y="1326.72" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">disconnectedEvent = true</text>
+<text x="1970" y="1358.92" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">将连接关闭事件加入消息队列</text>
+<polyline points="1970,1220 1970,1270" fill="none" stroke="#237968" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="1970,1270 1975.0,1259.0 1965.0,1259.0" fill="#237968"/>
+<text x="1997" y="1254.0" font-family="Microsoft YaHei" font-size="21" fill="#237968" text-anchor="middle">否</text>
+<rect x="1825.0" y="1430.0" width="290" height="60" rx="30.0" fill="#eaf3f8" stroke="#237968" stroke-width="2.3"/>
+<text x="1970" y="1467.82" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">接收线程结束</text>
+<polyline points="1970,1400 1970,1430" fill="none" stroke="#237968" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="1970,1430 1975.0,1419.0 1965.0,1419.0" fill="#237968"/>
+<polyline points="2125,470 2230,470 2230,1460 2115,1460" fill="none" stroke="#237968" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="2115,1460 2126.0,1465.0 2126.0,1455.0" fill="#237968"/>
+<text x="2210" y="450.0" font-family="Microsoft YaHei" font-size="21" fill="#237968" text-anchor="middle">是</text>
+<polyline points="2125,1170 2230,1170" fill="none" stroke="#237968" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="2230,1170 2219.0,1165.0 2219.0,1175.0" fill="#237968"/>
+<text x="2190" y="1150.0" font-family="Microsoft YaHei" font-size="21" fill="#237968" text-anchor="middle">是</text>
+<rect x="1765.0" y="1520.0" width="410" height="100" rx="10" fill="#eaf7f2" stroke="#237968" stroke-width="2.3"/>
+<text x="1970" y="1561.72" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">共享消息队列 · queueMutex</text>
+<text x="1970" y="1593.92" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">主线程取出、匹配响应并显示</text>
+<polyline points="2145,1010 2190,1010 2190,1570 2175,1570" fill="none" stroke="#237968" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="10 7"/>
+<polygon points="2175,1570 2186.0,1575.0 2186.0,1565.0" fill="#237968"/>
+<polyline points="1765,1570 1645,1570 1645,445 1090,445" fill="none" stroke="#237968" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="10 7"/>
+<polygon points="1090,445 1101.0,450.0 1101.0,440.0" fill="#237968"/>
+<text x="65" y="1694.0" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="start">主线程显示：时间(101)、名字(102)、列表(103)、转发消息(104)、发送确认(105)、欢迎(106)、错误(199)。</text>
+<text x="65" y="1726.2" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="start">断线事件由主线程处理：connected = false，clientListFetched = false；等待输入时也持续处理队列。</text>
+<text x="65" y="1787.0" font-family="Microsoft YaHei" font-size="23" fill="#245c8c" text-anchor="start">共用协议：12 字节网络序报头 [type | request_id | body_length] + UTF-8 消息体；sendAll / recvExact 处理部分收发。</text>
+<text x="65" y="1850.0" font-family="Microsoft YaHei" font-size="21" fill="#26354a" text-anchor="start">实线：控制流程    绿色虚线：线程启动 / 消息入队    依据：repo/Lab2/user.cpp；lab2/report2-socket.docx</text>
+</svg>

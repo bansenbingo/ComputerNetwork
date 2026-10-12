@@ -1,0 +1,192 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2500" height="2040" viewBox="0 0 2500 2040">
+<rect width="2500" height="2040" fill="#ffffff"/>
+<text x="65" y="65.0" font-family="Microsoft YaHei" font-size="42" fill="#245c8c" text-anchor="start">服务端程序框架 · server.cpp</text>
+<text x="65" y="112.0" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="start">TCP Socket 实验  |  主线程接受新连接，每个客户端独立启动一个工作线程</text>
+<rect x="40" y="150" width="690" height="1715" rx="16" fill="#ffffff" stroke="#ccd6e0" stroke-width="2"/>
+<text x="64" y="187.0" font-family="Microsoft YaHei" font-size="27" fill="#245c8c" text-anchor="start">主线程 · main() / accept 循环</text>
+<rect x="760" y="150" width="1700" height="1715" rx="16" fill="#ffffff" stroke="#ccd6e0" stroke-width="2"/>
+<text x="784" y="187.0" font-family="Microsoft YaHei" font-size="27" fill="#237968" text-anchor="start">客户端工作线程 · clientWorker(client)</text>
+<rect x="270.0" y="212.5" width="230" height="55" rx="27.5" fill="#eaf3f8" stroke="#245c8c" stroke-width="2.3"/>
+<text x="385" y="248.16" font-family="Microsoft YaHei" font-size="24" fill="#26354a" text-anchor="middle">开始</text>
+<rect x="165.0" y="285.0" width="440" height="140" rx="10" fill="#f4f8fc" stroke="#245c8c" stroke-width="2.3"/>
+<text x="385" y="330.62" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">WSAStartup(2.2)</text>
+<text x="385" y="362.82" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">socket(AF_INET, SOCK_STREAM)</text>
+<text x="385" y="395.02" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">注册 Ctrl+C 控制处理函数</text>
+<polyline points="385,268 385,285" fill="none" stroke="#26354a" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="385,285 390.0,274.0 380.0,274.0" fill="#26354a"/>
+<rect x="165.0" y="455.0" width="440" height="150" rx="10" fill="#f4f8fc" stroke="#245c8c" stroke-width="2.3"/>
+<text x="385" y="505.62" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">绑定 INADDR_ANY : 4669</text>
+<text x="385" y="537.82" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">bind() → listen(SOMAXCONN)</text>
+<text x="385" y="570.02" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">学号后四位作为监听端口</text>
+<polyline points="385,425 385,455" fill="none" stroke="#26354a" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="385,455 390.0,444.0 380.0,444.0" fill="#26354a"/>
+<polygon points="385,650.0 545.0,705 385,760.0 225.0,705" fill="#fff8e8" stroke="#245c8c" stroke-width="2.3"/>
+<text x="385" y="712.82" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">初始化成功？</text>
+<polyline points="385,605 385,650" fill="none" stroke="#26354a" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="385,650 390.0,639.0 380.0,639.0" fill="#26354a"/>
+<polyline points="225,705 90,705 90,1640 165,1640" fill="none" stroke="#a44848" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="165,1640 154.0,1635.0 154.0,1645.0" fill="#a44848"/>
+<text x="176" y="630.0" font-family="Microsoft YaHei" font-size="21" fill="#a44848" text-anchor="middle">否：清理并返回 1</text>
+<rect x="185.0" y="812.5" width="400" height="125" rx="10" fill="#f4f8fc" stroke="#245c8c" stroke-width="2.3"/>
+<text x="385" y="866.72" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">serverRunning 循环</text>
+<text x="385" y="898.9200000000001" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">accept() 返回新的连接 socket</text>
+<polyline points="385,760 385,813" fill="none" stroke="#26354a" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="385,813 390.0,802.0 380.0,802.0" fill="#26354a"/>
+<text x="414" y="795.0" font-family="Microsoft YaHei" font-size="21" fill="#26354a" text-anchor="middle">是</text>
+<polygon points="385,990.0 545.0,1050 385,1110.0 225.0,1050" fill="#fff8e8" stroke="#245c8c" stroke-width="2.3"/>
+<text x="385" y="1041.72" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">句柄有效且</text>
+<text x="385" y="1073.92" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">服务仍在运行？</text>
+<polyline points="385,938 385,990" fill="none" stroke="#26354a" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="385,990 390.0,979.0 380.0,979.0" fill="#26354a"/>
+<rect x="170.0" y="1150.0" width="430" height="160" rx="10" fill="#f4f8fc" stroke="#245c8c" stroke-width="2.3"/>
+<text x="385" y="1189.52" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">创建 Client 并分配唯一编号</text>
+<text x="385" y="1221.72" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">记录 socket、IP、源端口与状态</text>
+<text x="385" y="1253.92" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">加 clientsMutex 锁写入 clients</text>
+<text x="385" y="1286.12" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">设置发送超时 5 s</text>
+<polyline points="385,1110 385,1150" fill="none" stroke="#26354a" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="385,1150 390.0,1139.0 380.0,1139.0" fill="#26354a"/>
+<text x="414" y="1140.0" font-family="Microsoft YaHei" font-size="21" fill="#26354a" text-anchor="middle">是</text>
+<rect x="175.0" y="1345.0" width="420" height="110" rx="10" fill="#f4f8fc" stroke="#245c8c" stroke-width="2.3"/>
+<text x="385" y="1391.72" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">创建 clientWorker 子线程 ①</text>
+<text x="385" y="1423.92" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">传入新连接对应的 Client</text>
+<polyline points="385,1310 385,1345" fill="none" stroke="#26354a" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="385,1345 390.0,1334.0 380.0,1334.0" fill="#26354a"/>
+<polyline points="175,1400 135,1400 135,875 185,875" fill="none" stroke="#26354a" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="185,875 174.0,870.0 174.0,880.0" fill="#26354a"/>
+<text x="215" y="980.0" font-family="Microsoft YaHei" font-size="21" fill="#26354a" text-anchor="middle">继续接受其他客户端</text>
+<polyline points="545,1050 675,1050 675,1580 605,1580" fill="none" stroke="#a44848" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="605,1580 616.0,1585.0 616.0,1575.0" fill="#a44848"/>
+<text x="618" y="1028.0" font-family="Microsoft YaHei" font-size="21" fill="#a44848" text-anchor="middle">否</text>
+<rect x="165.0" y="1540.0" width="440" height="200" rx="10" fill="#f4f8fc" stroke="#245c8c" stroke-width="2.3"/>
+<text x="385" y="1583.4199999999998" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">停止接受连接</text>
+<text x="385" y="1615.62" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">shutdown() 唤醒客户端线程</text>
+<text x="385" y="1647.82" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">join() 等待所有工作线程</text>
+<text x="385" y="1680.0199999999998" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">关闭监听 socket</text>
+<text x="385" y="1712.2199999999998" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">WSACleanup()</text>
+<rect x="270.0" y="1765.0" width="230" height="60" rx="30.0" fill="#eaf3f8" stroke="#245c8c" stroke-width="2.3"/>
+<text x="385" y="1803.16" font-family="Microsoft YaHei" font-size="24" fill="#26354a" text-anchor="middle">结束</text>
+<polyline points="385,1740 385,1765" fill="none" stroke="#26354a" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="385,1765 390.0,1754.0 380.0,1754.0" fill="#26354a"/>
+<text x="80" y="1510.0" font-family="Microsoft YaHei" font-size="21" fill="#a44848" text-anchor="start">Ctrl+C：置 serverRunning = false，</text>
+<text x="80" y="1539.4" font-family="Microsoft YaHei" font-size="21" fill="#a44848" text-anchor="start">关闭监听 socket，退出 accept 循环。</text>
+<rect x="1510.0" y="205.0" width="380" height="70" rx="35.0" fill="#eaf3f8" stroke="#237968" stroke-width="2.3"/>
+<text x="1700" y="248.16" font-family="Microsoft YaHei" font-size="24" fill="#26354a" text-anchor="middle">① 每个客户端各一个线程</text>
+<polyline points="595,1400 745,1400 745,240 1510,240" fill="none" stroke="#237968" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="10 7"/>
+<polygon points="1510,240 1499.0,235.0 1499.0,245.0" fill="#237968"/>
+<rect x="1465.0" y="305.0" width="470" height="90" rx="10" fill="#f4f8fc" stroke="#237968" stroke-width="2.3"/>
+<text x="1700" y="341.71999999999997" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">使用此客户端独立的 socket</text>
+<text x="1700" y="373.91999999999996" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">发送欢迎消息 Greeting(106)</text>
+<polyline points="1700,275 1700,305" fill="none" stroke="#237968" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="1700,305 1705.0,294.0 1695.0,294.0" fill="#237968"/>
+<rect x="1440.0" y="425.0" width="520" height="120" rx="10" fill="#f4f8fc" stroke="#237968" stroke-width="2.3"/>
+<text x="1700" y="476.36" font-family="Microsoft YaHei" font-size="24" fill="#26354a" text-anchor="middle">连接标志有效时调用 recvPacket()</text>
+<text x="1700" y="509.96000000000004" font-family="Microsoft YaHei" font-size="24" fill="#26354a" text-anchor="middle">完整读取报头与消息体，校验长度</text>
+<polyline points="1700,395 1700,425" fill="none" stroke="#237968" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="1700,425 1705.0,414.0 1695.0,414.0" fill="#237968"/>
+<polygon points="1700,590.0 1885.0,650 1700,710.0 1515.0,650" fill="#fff8e8" stroke="#237968" stroke-width="2.3"/>
+<text x="1700" y="641.36" font-family="Microsoft YaHei" font-size="24" fill="#26354a" text-anchor="middle">连接有效且</text>
+<text x="1700" y="674.96" font-family="Microsoft YaHei" font-size="24" fill="#26354a" text-anchor="middle">收到完整请求？</text>
+<polyline points="1700,545 1700,590" fill="none" stroke="#237968" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="1700,590 1705.0,579.0 1695.0,579.0" fill="#237968"/>
+<polygon points="1700,745.0 1955.0,815 1700,885.0 1445.0,815" fill="#fff8e8" stroke="#237968" stroke-width="2.3"/>
+<text x="1700" y="807.08" font-family="Microsoft YaHei" font-size="22" fill="#26354a" text-anchor="middle">request_id 非零？</text>
+<text x="1700" y="837.88" font-family="Microsoft YaHei" font-size="22" fill="#26354a" text-anchor="middle">非消息请求的 body 为空？</text>
+<polyline points="1700,710 1700,745" fill="none" stroke="#237968" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="1700,745 1705.0,734.0 1695.0,734.0" fill="#237968"/>
+<text x="1730" y="735.0" font-family="Microsoft YaHei" font-size="21" fill="#237968" text-anchor="middle">是</text>
+<polygon points="1700,920.0 1865.0,975 1700,1030.0 1535.0,975" fill="#fff8e8" stroke="#237968" stroke-width="2.3"/>
+<text x="1700" y="983.16" font-family="Microsoft YaHei" font-size="24" fill="#26354a" text-anchor="middle">按请求 type 分支</text>
+<polyline points="1700,885 1700,920" fill="none" stroke="#237968" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="1700,920 1705.0,909.0 1695.0,909.0" fill="#237968"/>
+<text x="1730" y="911.0" font-family="Microsoft YaHei" font-size="21" fill="#237968" text-anchor="middle">是</text>
+<polyline points="1700,1030 1700,1060" fill="none" stroke="#237968" stroke-width="2.5" stroke-linejoin="round"/>
+<polyline points="1000,1060 2050,1060" fill="none" stroke="#237968" stroke-width="2.5" stroke-linejoin="round"/>
+<text x="1000" y="1044.0" font-family="Microsoft YaHei" font-size="23" fill="#237968" text-anchor="middle">1 获取时间</text>
+<polyline points="1000,1060 1000,1100" fill="none" stroke="#237968" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="1000,1100 1005.0,1089.0 995.0,1089.0" fill="#237968"/>
+<text x="1350" y="1044.0" font-family="Microsoft YaHei" font-size="23" fill="#237968" text-anchor="middle">2 获取名字</text>
+<polyline points="1350,1060 1350,1100" fill="none" stroke="#237968" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="1350,1100 1355.0,1089.0 1345.0,1089.0" fill="#237968"/>
+<text x="1700" y="1044.0" font-family="Microsoft YaHei" font-size="23" fill="#237968" text-anchor="middle">3 活动列表</text>
+<polyline points="1700,1060 1700,1100" fill="none" stroke="#237968" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="1700,1100 1705.0,1089.0 1695.0,1089.0" fill="#237968"/>
+<text x="2050" y="1044.0" font-family="Microsoft YaHei" font-size="23" fill="#237968" text-anchor="middle">4 转发消息</text>
+<polyline points="2050,1060 2050,1100" fill="none" stroke="#237968" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="2050,1100 2055.0,1089.0 2045.0,1089.0" fill="#237968"/>
+<rect x="855.0" y="1100.0" width="290" height="160" rx="10" fill="#f4f8fc" stroke="#237968" stroke-width="2.3"/>
+<text x="1000" y="1171.3600000000001" font-family="Microsoft YaHei" font-size="24" fill="#26354a" text-anchor="middle">time() 获取本地时间</text>
+<text x="1000" y="1204.96" font-family="Microsoft YaHei" font-size="24" fill="#26354a" text-anchor="middle">格式化日期与时分秒</text>
+<rect x="855.0" y="1325.0" width="290" height="110" rx="10" fill="#f4f8fc" stroke="#237968" stroke-width="2.3"/>
+<text x="1000" y="1371.72" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">回复 Time(101)</text>
+<text x="1000" y="1403.92" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">携带原 request_id</text>
+<polyline points="1000,1260 1000,1325" fill="none" stroke="#237968" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="1000,1325 1005.0,1314.0 995.0,1314.0" fill="#237968"/>
+<rect x="1205.0" y="1100.0" width="290" height="160" rx="10" fill="#f4f8fc" stroke="#237968" stroke-width="2.3"/>
+<text x="1350" y="1171.3600000000001" font-family="Microsoft YaHei" font-size="24" fill="#26354a" text-anchor="middle">GetComputerNameW()</text>
+<text x="1350" y="1204.96" font-family="Microsoft YaHei" font-size="24" fill="#26354a" text-anchor="middle">转换为 UTF-8 名称</text>
+<rect x="1205.0" y="1325.0" width="290" height="110" rx="10" fill="#f4f8fc" stroke="#237968" stroke-width="2.3"/>
+<text x="1350" y="1371.72" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">回复 Name(102)</text>
+<text x="1350" y="1403.92" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">失败时回复 Error(199)</text>
+<polyline points="1350,1260 1350,1325" fill="none" stroke="#237968" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="1350,1325 1355.0,1314.0 1345.0,1314.0" fill="#237968"/>
+<rect x="1555.0" y="1100.0" width="290" height="160" rx="10" fill="#f4f8fc" stroke="#237968" stroke-width="2.3"/>
+<text x="1700" y="1155.62" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">加锁获取在线客户端快照</text>
+<text x="1700" y="1187.82" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">按编号排序</text>
+<text x="1700" y="1220.02" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">生成编号 / IP / 端口列表</text>
+<rect x="1555.0" y="1325.0" width="290" height="110" rx="10" fill="#f4f8fc" stroke="#237968" stroke-width="2.3"/>
+<text x="1700" y="1371.72" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">回复 List(103)</text>
+<text x="1700" y="1403.92" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">携带原 request_id</text>
+<polyline points="1700,1260 1700,1325" fill="none" stroke="#237968" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="1700,1325 1705.0,1314.0 1695.0,1314.0" fill="#237968"/>
+<rect x="1905.0" y="1100.0" width="290" height="120" rx="10" fill="#f4f8fc" stroke="#237968" stroke-width="2.3"/>
+<text x="2050" y="1151.3600000000001" font-family="Microsoft YaHei" font-size="24" fill="#26354a" text-anchor="middle">解析目标编号与消息</text>
+<text x="2050" y="1184.96" font-family="Microsoft YaHei" font-size="24" fill="#26354a" text-anchor="middle">查找目标 Client</text>
+<polygon points="2050,1250.0 2220.0,1320 2050,1390.0 1880.0,1320" fill="#fff8e8" stroke="#237968" stroke-width="2.3"/>
+<text x="2050" y="1312.8" font-family="Microsoft YaHei" font-size="20" fill="#26354a" text-anchor="middle">格式 / 长度合法？</text>
+<text x="2050" y="1340.8" font-family="Microsoft YaHei" font-size="20" fill="#26354a" text-anchor="middle">目标在线且不是自己？</text>
+<polyline points="2050,1220 2050,1250" fill="none" stroke="#237968" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="2050,1250 2055.0,1239.0 2045.0,1239.0" fill="#237968"/>
+<rect x="1892.5" y="1405.0" width="315" height="190" rx="10" fill="#f4f8fc" stroke="#237968" stroke-width="2.3"/>
+<text x="2050" y="1448.3400000000001" font-family="Microsoft YaHei" font-size="21" fill="#26354a" text-anchor="middle">向目标 socket 发送</text>
+<text x="2050" y="1477.7400000000002" font-family="Microsoft YaHei" font-size="21" fill="#26354a" text-anchor="middle">Forward(104)，request_id = 0</text>
+<text x="2050" y="1507.14" font-family="Microsoft YaHei" font-size="21" fill="#26354a" text-anchor="middle">附发送者编号 / IP / 端口</text>
+<text x="2050" y="1536.5400000000002" font-family="Microsoft YaHei" font-size="21" fill="#26354a" text-anchor="middle">成功：向发送者回复 Ack(105)</text>
+<text x="2050" y="1565.94" font-family="Microsoft YaHei" font-size="21" fill="#26354a" text-anchor="middle">失败：向发送者回复 Error(199)</text>
+<polyline points="2050,1390 2050,1405" fill="none" stroke="#237968" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="2050,1405 2055.0,1394.0 2045.0,1394.0" fill="#237968"/>
+<text x="2095" y="1404.0" font-family="Microsoft YaHei" font-size="21" fill="#237968" text-anchor="middle">是</text>
+<rect x="2260.0" y="1115.0" width="180" height="150" rx="10" fill="#fff2f1" stroke="#a44848" stroke-width="2.3"/>
+<text x="2350" y="1166.68" font-family="Microsoft YaHei" font-size="22" fill="#26354a" text-anchor="middle">回复</text>
+<text x="2350" y="1197.48" font-family="Microsoft YaHei" font-size="22" fill="#26354a" text-anchor="middle">Error(199)</text>
+<text x="2350" y="1228.28" font-family="Microsoft YaHei" font-size="22" fill="#26354a" text-anchor="middle">带原请求编号</text>
+<polyline points="1955,815 2350,815 2350,1115" fill="none" stroke="#a44848" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="2350,1115 2355.0,1104.0 2345.0,1104.0" fill="#a44848"/>
+<text x="2230" y="792.0" font-family="Microsoft YaHei" font-size="21" fill="#a44848" text-anchor="middle">否</text>
+<polyline points="1865,975 2290,975 2290,1115" fill="none" stroke="#a44848" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="2290,1115 2295.0,1104.0 2285.0,1104.0" fill="#a44848"/>
+<text x="2190" y="954.0" font-family="Microsoft YaHei" font-size="21" fill="#a44848" text-anchor="middle">未知 type</text>
+<polyline points="2220,1320 2350,1320 2350,1265" fill="none" stroke="#a44848" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="2350,1265 2345.0,1276.0 2355.0,1276.0" fill="#a44848"/>
+<text x="2290" y="1300.0" font-family="Microsoft YaHei" font-size="21" fill="#a44848" text-anchor="middle">否</text>
+<polyline points="1000,1435 1000,1640" fill="none" stroke="#237968" stroke-width="2.5" stroke-linejoin="round"/>
+<polyline points="1350,1435 1350,1640" fill="none" stroke="#237968" stroke-width="2.5" stroke-linejoin="round"/>
+<polyline points="1700,1435 1700,1640" fill="none" stroke="#237968" stroke-width="2.5" stroke-linejoin="round"/>
+<polyline points="2050,1595 2050,1640" fill="none" stroke="#237968" stroke-width="2.5" stroke-linejoin="round"/>
+<polyline points="2350,1265 2440,1265 2440,1640 2050,1640" fill="none" stroke="#a44848" stroke-width="2.5" stroke-linejoin="round"/>
+<polyline points="2050,1640 810,1640 810,485 1440,485" fill="none" stroke="#237968" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="1440,485 1429.0,480.0 1429.0,490.0" fill="#237968"/>
+<text x="1480" y="1618.0" font-family="Microsoft YaHei" font-size="21" fill="#237968" text-anchor="middle">继续接收此客户端请求</text>
+<rect x="1420.0" y="1685.0" width="560" height="110" rx="10" fill="#f4f8fc" stroke="#237968" stroke-width="2.3"/>
+<text x="1700" y="1731.72" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">removeClient()：置离线标志</text>
+<text x="1700" y="1763.92" font-family="Microsoft YaHei" font-size="23" fill="#26354a" text-anchor="middle">shutdown / closesocket；加锁从 clients 移除</text>
+<polyline points="1885,650 2410,650 2410,1740 1980,1740" fill="none" stroke="#a44848" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="1980,1740 1991.0,1745.0 1991.0,1735.0" fill="#a44848"/>
+<text x="2210" y="626.0" font-family="Microsoft YaHei" font-size="21" fill="#a44848" text-anchor="middle">否 / 断线 / 帧错误</text>
+<rect x="1550.0" y="1817.5" width="300" height="45" rx="22.5" fill="#eaf3f8" stroke="#237968" stroke-width="2.3"/>
+<text x="1700" y="1847.48" font-family="Microsoft YaHei" font-size="22" fill="#26354a" text-anchor="middle">工作线程结束</text>
+<polyline points="1700,1795 1700,1817" fill="none" stroke="#237968" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="1700,1817 1705.0,1806.0 1695.0,1806.0" fill="#237968"/>
+<text x="65" y="1923.0" font-family="Microsoft YaHei" font-size="24" fill="#26354a" text-anchor="start">并发保护：clientsMutex 保护客户端注册表；每个 Client 的 sendMutex 保证响应与转发帧不会交错。</text>
+<text x="65" y="1970.0" font-family="Microsoft YaHei" font-size="23" fill="#245c8c" text-anchor="start">共用协议：12 B 网络序报头 + UTF-8 消息体（≤ 64 KiB）；sendAll / recvExact 循环处理部分收发。</text>
+<text x="65" y="2015.0" font-family="Microsoft YaHei" font-size="21" fill="#26354a" text-anchor="start">依据：repo/Lab2/server.cpp；lab2/report2-socket.docx    |    工作线程只使用 accept 返回的客户端 socket。</text>
+</svg>
